@@ -65,9 +65,6 @@ const heapSortSteps = (arr) => {
   return steps;
 };
 
-// Example usage
-console.log(heapSortSteps([5, 3, 8, 4, 2]));
-
 const heapsort = async (req, res) => {
 
 }
