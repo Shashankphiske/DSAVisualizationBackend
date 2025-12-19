@@ -24,6 +24,6 @@ app.use("/shortestpathrouter", shortestPathRouter);
 app.use("/treealgo", treeRouter);
 app.use("/linkedlist", linkedListRouter);
 app.use("/stackalgo", stackAlgoRouter);
-qpp.use("/queuealgo", queueAlgoRouter);
+app.use("/queuealgo", queueAlgoRouter);
 
 app.listen(PORT);
