@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors")
 const sortingrouter = require("./routes/sortingalgoroutes");
 const { searchRouter } = require("./routes/searchingalgoroutes");
 const { graphRouter } = require("./routes/graphalgoroutes");
@@ -12,6 +13,8 @@ const PORT = 3000;
 
 const app = express();
 app.use(express.json());
+
+app.use(cors())
 
 app.get("/", (req, res) => {
     res.send("hello, world!");
