@@ -29,7 +29,7 @@ const insertionsort = async (req, res) => {
             j--;
         }
 
-        a[j + 1] = key;
+        arr[j + 1] = key;
 
         steps.push({
             arr : [...arr],

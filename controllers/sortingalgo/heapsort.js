@@ -1,36 +1,50 @@
-const heapSortSteps = (arr) => {
-  const steps = [];
-  const a = [...arr];
+const heapsort = async (req, res) => {
+  const a = req.body.arr;
+  let arr = JSON.parse(a);
+
+  let steps = [];
 
   const heapify = (n, i) => {
     let largest = i;
     let left = 2 * i + 1;
     let right = 2 * i + 2;
 
+    // Compare left child
     if (left < n) {
       steps.push({
-        arr: [...a],
+        arr: [...arr],
         comparing: [i, left],
+        heapRange: n,
         swapped: false,
       });
-      if (a[left] > a[largest]) largest = left;
+
+      if (arr[left] > arr[largest]) {
+        largest = left;
+      }
     }
 
+    // Compare right child
     if (right < n) {
       steps.push({
-        arr: [...a],
-        comparing: [i, right],
+        arr: [...arr],
+        comparing: [largest, right],
+        heapRange: n,
         swapped: false,
       });
-      if (a[right] > a[largest]) largest = right;
+
+      if (arr[right] > arr[largest]) {
+        largest = right;
+      }
     }
 
+    // Swap if needed
     if (largest !== i) {
-      [a[i], a[largest]] = [a[largest], a[i]];
+      [arr[i], arr[largest]] = [arr[largest], arr[i]];
 
       steps.push({
-        arr: [...a],
+        arr: [...arr],
         comparing: [i, largest],
+        heapRange: n,
         swapped: true,
       });
 
@@ -38,35 +52,45 @@ const heapSortSteps = (arr) => {
     }
   };
 
-  // Build max heap
-  for (let i = Math.floor(a.length / 2) - 1; i >= 0; i--) {
-    heapify(a.length, i);
-  }
+  const heapSort = () => {
+    const n = arr.length;
 
-  // Extract elements from heap
-  for (let i = a.length - 1; i > 0; i--) {
-    [a[0], a[i]] = [a[i], a[0]];
+    // 🔹 Build max heap
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+      heapify(n, i);
+    }
 
-    steps.push({
-      arr: [...a],
-      comparing: [0, i],
-      swapped: true,
-    });
+    // 🔹 Extract elements from heap
+    for (let i = n - 1; i > 0; i--) {
+      // Move current root to end
+      [arr[0], arr[i]] = [arr[i], arr[0]];
 
-    heapify(i, 0);
-  }
+      steps.push({
+        arr: [...arr],
+        comparing: [0, i],
+        heapRange: i,
+        swapped: true,
+      });
 
+      // Heapify reduced heap
+      heapify(i, 0);
+    }
+  };
+
+  heapSort();
+
+  // Final step
   steps.push({
-    arr: [...a],
+    arr: [...arr],
     comparing: [],
+    heapRange: 0,
     swapped: false,
   });
 
-  return steps;
+  return res.status(200).json({
+    message: "success",
+    arr: steps,
+  });
 };
-
-const heapsort = async (req, res) => {
-
-}
 
 module.exports = { heapsort };
