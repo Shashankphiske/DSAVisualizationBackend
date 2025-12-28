@@ -1,10 +1,22 @@
 const dijkstrasalgo = async (req, res) => {
-  let adj = req.body.adj;
-  const start = req.body.start;
-  const end = req.body.end;
-  
+  let { adj, start, end } = req.body;
+
+  if (!adj || !start || !end) {
+    return res.status(400).json({
+      message: "Invalid input",
+      arr: [],
+    });
+  }
+
   if (typeof adj === "string") {
     adj = JSON.parse(adj);
+  }
+
+  if (!adj[start] || !adj[end]) {
+    return res.status(400).json({
+      message: "Start or end node not found",
+      arr: [],
+    });
   }
 
   let steps = [];
@@ -13,53 +25,61 @@ const dijkstrasalgo = async (req, res) => {
   const previous = {};
   const pq = [];
 
+  // Initialize distances
   for (let node of Object.keys(adj)) {
     distances[node] = Infinity;
   }
-
   distances[start] = 0;
+
   pq.push({ node: start, distance: 0 });
 
   while (pq.length > 0) {
+    // Priority queue behavior
     pq.sort((a, b) => a.distance - b.distance);
-    const { node } = pq.shift();
+    const { node: currentNode, distance } = pq.shift();
+
+    // Skip stale entries
+    if (visited.has(currentNode)) continue;
+
+    visited.add(currentNode);
 
     let step = {
       priorityQ: [...pq],
+      currentNode,
+      neighbors: [],
       distances: { ...distances },
       previous: { ...previous },
-      currentNode: node,
-      neighbors: [],
       visited: Array.from(visited),
       found: false,
     };
 
-    if (visited.has(node)) {
-      steps.push(step);
-      continue;
-    }
-
-    visited.add(node);
-
-    if (node === end) {
+    // 🎯 Target reached
+    if (currentNode === end) {
       step.found = true;
       steps.push(step);
       break;
     }
 
-    for (let neighbor in adj[node]) {
-      const ndist = distances[node] + adj[node][neighbor];
+    // Relax edges
+    for (let neighbor in adj[currentNode]) {
+      const weight = adj[currentNode][neighbor];
+      const newDist = distances[currentNode] + weight;
+
       step.neighbors.push(neighbor);
-      if (ndist < distances[neighbor]) {
-        distances[neighbor] = ndist;
-        previous[neighbor] = node;
-        pq.push({ node: neighbor, distance: ndist });
+
+      if (newDist < distances[neighbor]) {
+        distances[neighbor] = newDist;
+        previous[neighbor] = currentNode;
+        pq.push({ node: neighbor, distance: newDist });
       }
     }
 
+    // Update step AFTER relaxation
     step.distances = { ...distances };
     step.previous = { ...previous };
+    step.priorityQ = [...pq];
     step.visited = Array.from(visited);
+
     steps.push(step);
   }
 

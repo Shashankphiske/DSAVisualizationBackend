@@ -1,48 +1,68 @@
-const dfs = async (req ,res) => {
-    const root = req.body.root;
-    const num = req.body.num;
-    const adjList = req.body.adjList;
+const dfs = async (req, res) => {
+  const { root, num, adjList } = req.body;
 
-    let s = [];
-    let steps = [];
-    let visited = [];
+  if (
+    !adjList ||
+    typeof adjList !== "object" ||
+    root === undefined ||
+    num === undefined
+  ) {
+    return res.status(400).json({
+      message: "Invalid input",
+      arr: [],
+    });
+  }
 
-    s.unshift(root);
+  if (!adjList[root]) {
+    return res.status(400).json({
+      message: "Root node not found",
+      arr: [],
+    });
+  }
 
-    while(s.length != 0){
+  let stack = [];
+  let steps = [];
+  let visited = new Set();
 
-        let step = {
-            stack : [...s],
-            neighbours : [],
-            current : null,
-            found : false
-        }
+  stack.unshift(root);
+  visited.add(root);
 
-        let n = s.shift();
+  while (stack.length !== 0) {
+    const stackSnapshot = [...stack];
+    const current = stack.shift();
 
-        let neighbours = adjList[n];
+    const neighbours = Array.isArray(adjList[current])
+      ? adjList[current]
+      : [];
 
-        step.current = n;
-        step.neighbours = [...neighbours];
+    const step = {
+      stack: stackSnapshot,
+      neighbours: neighbours,
+      current: current,
+      found: false,
+    };
 
-        if(num == n){
-            step.found = true;
-            steps.push(step);
-            break;
-        }else{
-            steps.push(step);
-            for(let i of neighbours){
-                if(!visited.includes(i)){
-                    s.unshift(i);
-                }
-            }
-        }
+    if (current == num) {
+      step.found = true;
+      steps.push(step);
+      break;
     }
 
-    return res.status(200).json({
-        message : "success",
-        arr : steps
-    });
-}
+    steps.push(step);
 
-module.exports = { dfs }
+    for (let i = neighbours.length - 1; i >= 0; i--) {
+      const neighbor = neighbours[i];
+      if (!visited.has(neighbor)) {
+        visited.add(neighbor);
+        stack.unshift(neighbor);
+      }
+    }
+  }
+
+  return res.status(200).json({
+    message: "success",
+    arr: steps,
+  });
+};
+
+module.exports = { dfs };

@@ -1,47 +1,67 @@
 const bfs = async (req, res) => {
-    const adjList = req.body.adjList;
-    const num = req.body.num;
-    const root = req.body.root;
+  const { adjList, root, num } = req.body;
 
-    let q = [];
-    let steps = [];
-    let visited = [];
+  if (
+    !adjList ||
+    typeof adjList !== "object" ||
+    root === undefined ||
+    num === undefined
+  ) {
+    return res.status(400).json({
+      message: "Invalid input",
+      arr: [],
+    });
+  }
 
-    q.push(root);
+  if (!adjList[root]) {
+    return res.status(400).json({
+      message: "Root node not found",
+      arr: [],
+    });
+  }
 
-    while(q.length != 0){
-        let dq = [...q];
-        let n = q.shift();
-        visited.push(n);
+  let queue = [];
+  let steps = [];
+  let visited = new Set();
 
-        let neighbours = adjList[n];
+  queue.push(root);
+  visited.add(root);
 
-        let step = {
-            num : n,
-            neighbours : neighbours,
-            found : false,
-            queue : dq
-        }
+  while (queue.length > 0) {
+    const queueSnapshot = [...queue];
+    const current = queue.shift();
 
-        if(n == num){
-            step.found = true;
-            steps.push(step);
-            break;
-        }else{
-            steps.push(step);
-            for(let i of neighbours){
-                if(!visited.includes(i)){
-                    q.push(i);
-                }
-            }
-        }
+    const neighbours = Array.isArray(adjList[current])
+      ? adjList[current]
+      : [];
 
+    const step = {
+      num: current,
+      neighbours: neighbours,
+      queue: queueSnapshot,
+      found: false,
+    };
+
+    if (current == num) {
+      step.found = true;
+      steps.push(step);
+      break;
     }
 
-    return res.status(200).json({
-        message : "success",
-        arr : steps
-    });
-}
+    steps.push(step);
 
-module.exports = { bfs }
+    for (let neighbor of neighbours) {
+      if (!visited.has(neighbor)) {
+        visited.add(neighbor);
+        queue.push(neighbor);
+      }
+    }
+  }
+
+  return res.status(200).json({
+    message: "success",
+    arr: steps,
+  });
+};
+
+module.exports = { bfs };
