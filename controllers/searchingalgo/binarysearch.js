@@ -1,44 +1,43 @@
 const binarysearch = async (req, res) => {
-    const a = req.body.arr;
-    let arr = JSON.parse(a);
-    let num = req.body.num;
+  const a = req.body.arr;
+  let arr = JSON.parse(a);
+  const num = req.body.num;
 
-    let steps = [];
+  let steps = [];
 
-    let left = 0;
-    let right = arr.length - 1;
-    let mid = Math.round((left + right) / 2);
+  let left = 0;
+  let right = arr.length - 1;
 
-    while(left <= right){
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2); // ✅ FIXED
 
-        let step = {
-            arr : [...arr],
-            left : left,
-            right : right,
-            mid : mid,
-            found : false
-        }
+    let step = {
+      arr: [...arr],
+      left,
+      right,
+      mid,
+      found: false,
+    };
 
-        if(arr[mid] == num){
-            step.found = true;
-            steps.push(step);
-            break;
-        }else if(num < arr[mid]){
-            right = mid - 1;
-            mid = Math.round((left + right) / 2);
-        }else if(num > arr[mid]){
-            left = mid + 1;
-            mid = Math.round((left + right) / 2);
-        }
-
-        steps.push(step);
+    if (arr[mid] == num) {
+      step.found = true;
+      steps.push(step);
+      break;
     }
 
-    return res.status(200).json({
-        message : "success",
-        arr : steps
-    });
+    steps.push(step); // ✅ push BEFORE changing bounds
 
-}
+    if (num < arr[mid]) {
+      right = mid - 1;
+    } else {
+      left = mid + 1;
+    }
+  }
 
-module.exports = { binarysearch }
+  return res.status(200).json({
+    message: "success",
+    arr: steps,
+  });
+};
+
+module.exports = { binarysearch };

@@ -1,55 +1,77 @@
-const helper = (node, steps) => {
-  if (node === null) return;
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
 
-  helper(node.left, steps);
+/* ================= INORDER HELPER ================= */
+const inorderHelper = (node, steps) => {
+  if (!node) return;
 
+  inorderHelper(node.left, steps);
   steps.push(node.val);
-
-  helper(node.right, steps);
+  inorderHelper(node.right, steps);
 };
 
-class Node{
-    constructor(val, left = null, right = null){
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
-
+/* ================= INORDER CONTROLLER ================= */
 const inorder = (req, res) => {
-    let adj = req.body.adj;
+  const adj = req.body.adj;
 
-    let steps = [];
+  // 🔒 Validation
+  if (!adj || typeof adj !== "object") {
+    return res.status(400).json({
+      message: "Invalid adjacency list",
+      arr: [],
+    });
+  }
 
-    let k = Object.keys(adj);
-    let q = [];
+  const nodes = {};
+  const children = new Set();
 
-    let root = new Node(k[0]);
+  // Create nodes
+  for (let key of Object.keys(adj)) {
+    if (!nodes[key]) nodes[key] = new Node(key);
 
-    q.push(root);
+    const [left, right] = adj[key] || [];
 
-    while(q.length != 0){
-        let node = q.shift();
-
-        let l = adj[node.val]
-        if(l[0] != null){
-            let left = new Node(l[0]);
-            node.left = left;
-            q.push(left);
-        }
-        if(l[1] != null){
-            let right = new Node(l[1]);
-            node.right = right;
-            q.push(right);
-        }
+    if (left !== null && left !== "") {
+      if (!nodes[left]) nodes[left] = new Node(left);
+      nodes[key].left = nodes[left];
+      children.add(left);
     }
 
-    helper(root, steps);
+    if (right !== null && right !== "") {
+      if (!nodes[right]) nodes[right] = new Node(right);
+      nodes[key].right = nodes[right];
+      children.add(right);
+    }
+  }
 
-    return res.status(200).json({
-        message : "success",
-        arr : steps
+  // 🔑 Find root (node that is never a child)
+  let root = null;
+  for (let key of Object.keys(nodes)) {
+    if (!children.has(key)) {
+      root = nodes[key];
+      break;
+    }
+  }
+
+  if (!root) {
+    return res.status(400).json({
+      message: "Invalid tree: root not found",
+      arr: [],
     });
-}
+  }
 
-module.exports = { inorder }
+  let steps = [];
+  inorderHelper(root, steps);
+
+  return res.status(200).json({
+    message: "success",
+    arr: steps,
+  });
+};
+
+module.exports = { inorder };

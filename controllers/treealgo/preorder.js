@@ -1,56 +1,78 @@
-class Node{
-    constructor(val, left, right){
-        this.val = val;
-        this.left = null;
-        this.right = null;
-    }
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
 }
 
-const helper = (node, steps) => {
+/* ================= PREORDER HELPER ================= */
+const preorderHelper = (node, steps) => {
+  if (!node) return;
 
-    if(node == null) return;
+  steps.push(node.val);        // Root
+  preorderHelper(node.left, steps);
+  preorderHelper(node.right, steps);
+};
 
-    steps.push(node.val);
-    helper(node.left, steps);
-    helper(node.right, steps);
-
-}
-
+/* ================= PREORDER CONTROLLER ================= */
 const preorder = (req, res) => {
+  const adj = req.body.adj;
 
-    const adj = req.body.adj;
-    let steps = [];
+  // 🔒 Validation
+  if (!adj || typeof adj !== "object") {
+    return res.status(400).json({
+      message: "Invalid adjacency list",
+      arr: [],
+    });
+  }
 
-    let q = [];
-    let root = new Node(Object.keys(adj)[0]);
+  const nodes = {};
+  const children = new Set();
 
-    q.push(root);
+  // Build nodes & edges
+  for (let key of Object.keys(adj)) {
+    if (!nodes[key]) nodes[key] = new Node(key);
 
-    while(q.length != 0){
-        let node = q.shift();
-        let l = adj[node.val];
+    const [left, right] = adj[key] || [];
 
-        if(l[0] != null){
-            let left = new Node(l[0]);
-            node.left = left;
-            q.push(left);
-        }
-
-        if(l[1] != null){
-            let right = new Node(l[1]);
-            node.right = right;
-            q.push(right);
-        }
-
+    if (left !== null && left !== "") {
+      if (!nodes[left]) nodes[left] = new Node(left);
+      nodes[key].left = nodes[left];
+      children.add(left);
     }
 
-    helper(root, steps);
+    if (right !== null && right !== "") {
+      if (!nodes[right]) nodes[right] = new Node(right);
+      nodes[key].right = nodes[right];
+      children.add(right);
+    }
+  }
 
-    return res.status(200).json({
-        message : "success",
-        arr : steps
+  // 🔑 Detect root
+  let root = null;
+  for (let key of Object.keys(nodes)) {
+    if (!children.has(key)) {
+      root = nodes[key];
+      break;
+    }
+  }
+
+  if (!root) {
+    return res.status(400).json({
+      message: "Invalid tree: root not found",
+      arr: [],
     });
+  }
 
-}
+  // Preorder traversal
+  let steps = [];
+  preorderHelper(root, steps);
 
-module.exports = { preorder }
+  return res.status(200).json({
+    message: "success",
+    arr: steps,
+  });
+};
+
+module.exports = { preorder };
