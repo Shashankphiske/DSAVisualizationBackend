@@ -21,12 +21,6 @@ const linearsearch = async (req, res) => {
         }
     }
 
-    steps.push({
-        arr : [...arr],
-        found : false,
-        index : null
-    });
-
     return res.status(200).json({
         message : "success",
         arr : steps
