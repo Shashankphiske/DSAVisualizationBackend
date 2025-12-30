@@ -8,6 +8,7 @@ const { treeRouter } = require("./routes/treealgoroutes");
 const { linkedListRouter } = require("./routes/linkedlistalgo");
 const { stackAlgoRouter } = require("./routes/stackalgoroutes");
 const { queueAlgoRouter } = require("./routes/queuealgoroutes");
+const { dynamicalgorouter } = require("./routes/dynamicalgoroutes");
 
 const PORT = 3000;
 
@@ -28,5 +29,6 @@ app.use("/treealgo", treeRouter);
 app.use("/linkedlist", linkedListRouter);
 app.use("/stackalgo", stackAlgoRouter);
 app.use("/queuealgo", queueAlgoRouter);
+app.use("/dynamicalgo", dynamicalgorouter);
 
 app.listen(PORT);
