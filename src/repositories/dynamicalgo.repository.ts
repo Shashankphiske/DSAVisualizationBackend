@@ -24,29 +24,45 @@ export class DynamicAlgoRepository {
 
   coinChange(coins: number[], amount: number): { steps: CoinChangeStep[]; result: number } {
     const dp = Array(amount + 1).fill(Infinity);
-    dp[0] = 0;
-    const steps: CoinChangeStep[] = [];
+    dp[0] = 0; // Base case: 0 coins to make amount 0
+    const steps = [];
 
-    steps.push({ currentAmount: 0, coin: null, dpSnapshot: [...dp], explanation: "Initialize dp[0] = 0, others = ∞" });
+    steps.push({
+      currentAmount: 0,
+      coin: null,
+      from: null,
+      dpSnapshot: [...dp],
+      explanation: "Initialize dp[0] = 0, others = ∞",
+    });
 
+    // Process each amount from 1 to the target amount
     for (let i = 1; i <= amount; i++) {
       for (const coin of coins) {
         if (i - coin >= 0 && dp[i - coin] !== Infinity) {
-          const candidate = dp[i - coin] + 1;
+          const candidate = dp[i - coin] + 1; // Choose the smallest number of coins
           if (candidate < dp[i]) {
             dp[i] = candidate;
             steps.push({
-              currentAmount: i, coin, from: i - coin, dpSnapshot: [...dp],
+              currentAmount: i,
+              coin,
+              from: i - coin,
+              dpSnapshot: [...dp],
               explanation: `dp[${i}] = min(dp[${i}], dp[${i - coin}] + 1) = ${dp[i]}`,
             });
           }
         }
       }
+
+      // Step after processing all coins for a specific amount
       steps.push({
-        currentAmount: i, coin: null, dpSnapshot: [...dp],
+        currentAmount: i,
+        coin: null,
+        from: null,
+        dpSnapshot: [...dp],
         explanation: dp[i] === Infinity ? `Amount ${i} cannot be formed yet` : `Minimum coins to form ${i} is ${dp[i]}`,
       });
     }
+
     return { steps, result: dp[amount] === Infinity ? -1 : dp[amount] };
   }
 

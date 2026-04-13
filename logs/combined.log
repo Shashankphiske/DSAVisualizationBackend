@@ -3,3 +3,87 @@
 {"ip":"::1","level":"http","message":"Generate Bubble Sort algo steps request received","timestamp":"2026-04-13 13:12:03"}
 {"count":5,"level":"info","message":"BubbleSort steps generated","timestamp":"2026-04-13 13:12:03"}
 {"level":"info","message":"POST /sortingalgo/bubblesort 9.114 ms","timestamp":"2026-04-13 13:12:03"}
+{"ip":"::1","level":"http","message":"Generate CoinChange algo steps request received","timestamp":"2026-04-13 14:44:48"}
+{"amount":11,"coins":[1,2,5],"level":"info","message":"Coin change algo steps generated","timestamp":"2026-04-13 14:44:48"}
+{"level":"info","message":"POST /dynamicalgo/coinchange 13.526 ms","timestamp":"2026-04-13 14:44:48"}
+{"ip":"::1","level":"http","message":"Generate Depth First Search algo steps request received","timestamp":"2026-04-13 14:46:40"}
+{"level":"info","message":"BFS algo steps generated","timestamp":"2026-04-13 14:46:40"}
+{"level":"info","message":"POST /graphalgo/depthfirstsearch 3.356 ms","timestamp":"2026-04-13 14:46:40"}
+{"ip":"::1","level":"http","message":"Generate Depth First Search algo steps request received","timestamp":"2026-04-13 14:46:59"}
+{"level":"info","message":"BFS algo steps generated","timestamp":"2026-04-13 14:46:59"}
+{"level":"info","message":"POST /graphalgo/depthfirstsearch 2.040 ms","timestamp":"2026-04-13 14:46:59"}
+{"ip":"::1","level":"http","message":"Generate Dijkstras algo steps request received","timestamp":"2026-04-13 14:47:52"}
+{"end":"D","level":"info","message":"Dijkstra shortest path steps generated","start":"A","timestamp":"2026-04-13 14:47:52"}
+{"level":"info","message":"POST /shortestpathrouter/dijkstrasalgo 4.573 ms","timestamp":"2026-04-13 14:47:52"}
+{"ip":"::1","level":"http","message":"Generate Doubly Linked List Reversal algo steps request received","timestamp":"2026-04-13 14:51:18"}
+{"level":"info","message":"LinkedList doubly reversal steps generated","timestamp":"2026-04-13 14:51:18"}
+{"level":"info","message":"POST /linkedlist/doublyreversal 4.206 ms","timestamp":"2026-04-13 14:51:18"}
+{"ip":"::1","level":"http","message":"Generate Fibonacci algo steps request received","timestamp":"2026-04-13 14:52:17"}
+{"level":"info","message":"Fibonacci algo steps generated","stepCount":8,"timestamp":"2026-04-13 14:52:17"}
+{"level":"info","message":"POST /dynamicalgo/fibonacci 3.522 ms","timestamp":"2026-04-13 14:52:17"}
+{"ip":"::1","level":"http","message":"Generate Linear Search algo steps request received","timestamp":"2026-04-13 15:08:31"}
+{"arrayLength":10,"level":"info","message":"Linear search steps generated","target":56,"timestamp":"2026-04-13 15:08:31"}
+{"level":"info","message":"POST /searchingalgo/linearsearch 4.873 ms","timestamp":"2026-04-13 15:08:31"}
+{"ip":"::1","level":"http","message":"Generate Merge Sort algo steps request received","timestamp":"2026-04-13 15:09:22"}
+{"count":5,"level":"info","message":"MergeSort steps generated","timestamp":"2026-04-13 15:09:22"}
+{"level":"info","message":"POST /sortingalgo/mergesort 3.078 ms","timestamp":"2026-04-13 15:09:22"}
+{"ip":"::1","level":"http","message":"Generate Dequeue algo steps request received","timestamp":"2026-04-13 15:11:40"}
+{"itemsRemoved":2,"level":"info","message":"Queue dequeue steps generated","timestamp":"2026-04-13 15:11:40"}
+{"level":"info","message":"POST /queuealgo/dequeue 4.231 ms","timestamp":"2026-04-13 15:11:40"}
+{"ip":"::1","level":"http","message":"Generate Selection Sort algo steps request received","timestamp":"2026-04-13 15:13:58"}
+{"count":5,"level":"info","message":"SelectionSort steps generated","timestamp":"2026-04-13 15:13:58"}
+{"level":"info","message":"POST /sortingalgo/selectionsort 2.409 ms","timestamp":"2026-04-13 15:13:58"}
+{"ip":"::1","level":"http","message":"Generate A Star algo steps request received","timestamp":"2026-04-13 15:26:43"}
+{"end":"D","level":"info","message":"A* shortest path steps generated","start":"A","timestamp":"2026-04-13 15:26:43"}
+{"level":"info","message":"POST /shortestpathrouter/astaralgo 5.687 ms","timestamp":"2026-04-13 15:26:43"}
+{"ip":"::1","level":"http","message":"Generate A Star algo steps request received","timestamp":"2026-04-13 15:29:09"}
+{"end":"D","level":"info","message":"A* shortest path steps generated","start":"A","timestamp":"2026-04-13 15:29:09"}
+{"level":"info","message":"POST /shortestpathrouter/astaralgo 2.586 ms","timestamp":"2026-04-13 15:29:09"}
+{"ip":"::1","level":"http","message":"Generate A Star algo steps request received","timestamp":"2026-04-13 15:30:02"}
+{"end":"D","level":"info","message":"A* shortest path steps generated","start":"A","timestamp":"2026-04-13 15:30:02"}
+{"level":"info","message":"POST /shortestpathrouter/astaralgo 2.400 ms","timestamp":"2026-04-13 15:30:02"}
+{"ip":"::1","level":"http","message":"Generate A Star algo steps request received","timestamp":"2026-04-13 15:31:45"}
+{"end":"D","level":"info","message":"A* shortest path steps generated","start":"A","timestamp":"2026-04-13 15:31:45"}
+{"level":"info","message":"POST /shortestpathrouter/astaralgo 2.320 ms","timestamp":"2026-04-13 15:31:45"}
+{"ip":"::1","level":"http","message":"Generate A Star algo steps request received","timestamp":"2026-04-13 15:31:56"}
+{"end":"D","level":"info","message":"A* shortest path steps generated","start":"A","timestamp":"2026-04-13 15:31:56"}
+{"level":"info","message":"POST /shortestpathrouter/astaralgo 1.666 ms","timestamp":"2026-04-13 15:31:56"}
+{"ip":"::1","level":"http","message":"Generate A Star algo steps request received","timestamp":"2026-04-13 15:33:05"}
+{"end":"D","level":"info","message":"A* shortest path steps generated","start":"A","timestamp":"2026-04-13 15:33:05"}
+{"level":"info","message":"POST /shortestpathrouter/astaralgo 3.495 ms","timestamp":"2026-04-13 15:33:05"}
+{"ip":"::1","level":"http","message":"Generate A Star algo steps request received","timestamp":"2026-04-13 15:33:59"}
+{"end":"D","level":"info","message":"A* shortest path steps generated","start":"A","timestamp":"2026-04-13 15:33:59"}
+{"level":"info","message":"POST /shortestpathrouter/astaralgo 1.667 ms","timestamp":"2026-04-13 15:33:59"}
+{"ip":"::1","level":"http","message":"Generate A Star algo steps request received","timestamp":"2026-04-13 15:37:04"}
+{"end":"D","level":"info","message":"A* shortest path steps generated","start":"A","timestamp":"2026-04-13 15:37:04"}
+{"level":"info","message":"POST /shortestpathrouter/astaralgo 18.029 ms","timestamp":"2026-04-13 15:37:04"}
+{"ip":"::1","level":"http","message":"Generate A Star algo steps request received","timestamp":"2026-04-13 15:37:34"}
+{"end":"D","level":"info","message":"A* shortest path steps generated","start":"A","timestamp":"2026-04-13 15:37:34"}
+{"level":"info","message":"POST /shortestpathrouter/astaralgo 3.412 ms","timestamp":"2026-04-13 15:37:34"}
+{"ip":"::1","level":"http","message":"Generate A Star algo steps request received","timestamp":"2026-04-13 15:41:43"}
+{"end":"D","level":"info","message":"A* shortest path steps generated","start":"A","timestamp":"2026-04-13 15:41:43"}
+{"level":"info","message":"POST /shortestpathrouter/astaralgo 13.211 ms","timestamp":"2026-04-13 15:41:43"}
+{"ip":"::1","level":"http","message":"Generate A Star algo steps request received","timestamp":"2026-04-13 15:43:18"}
+{"end":"D","level":"info","message":"A* shortest path steps generated","start":"A","timestamp":"2026-04-13 15:43:18"}
+{"level":"info","message":"POST /shortestpathrouter/astaralgo 3.118 ms","timestamp":"2026-04-13 15:43:18"}
+{"ip":"::1","level":"http","message":"Generate CoinChange algo steps request received","timestamp":"2026-04-13 15:50:39"}
+{"amount":11,"coins":[1,2,5],"level":"info","message":"Coin change algo steps generated","timestamp":"2026-04-13 15:50:39"}
+{"level":"info","message":"POST /dynamicalgo/coinchange 10.656 ms","timestamp":"2026-04-13 15:50:39"}
+{"ip":"::1","level":"http","message":"Generate CoinChange algo steps request received","timestamp":"2026-04-13 15:57:50"}
+{"amount":11,"coins":[1,2,5],"level":"info","message":"Coin change algo steps generated","timestamp":"2026-04-13 15:57:50"}
+{"level":"info","message":"POST /dynamicalgo/coinchange 4.179 ms","timestamp":"2026-04-13 15:57:50"}
+{"ip":"::1","level":"http","message":"Generate CoinChange algo steps request received","timestamp":"2026-04-13 16:00:57"}
+{"amount":11,"coins":[1,2,5],"level":"info","message":"Coin change algo steps generated","timestamp":"2026-04-13 16:00:57"}
+{"level":"info","message":"POST /dynamicalgo/coinchange 2.939 ms","timestamp":"2026-04-13 16:00:57"}
+{"ip":"::1","level":"http","message":"Generate CoinChange algo steps request received","timestamp":"2026-04-13 16:02:20"}
+{"amount":11,"coins":[1,2,5],"level":"info","message":"Coin change algo steps generated","timestamp":"2026-04-13 16:02:20"}
+{"level":"info","message":"POST /dynamicalgo/coinchange 3.060 ms","timestamp":"2026-04-13 16:02:20"}
+{"ip":"::1","level":"http","message":"Generate CoinChange algo steps request received","timestamp":"2026-04-13 16:03:43"}
+{"amount":11,"coins":[1,2,5],"level":"info","message":"Coin change algo steps generated","timestamp":"2026-04-13 16:03:43"}
+{"level":"info","message":"POST /dynamicalgo/coinchange 2.517 ms","timestamp":"2026-04-13 16:03:43"}
+{"ip":"::1","level":"http","message":"Generate CoinChange algo steps request received","timestamp":"2026-04-13 16:07:47"}
+{"amount":11,"coins":[1,2,5],"level":"info","message":"Coin change algo steps generated","timestamp":"2026-04-13 16:07:47"}
+{"level":"info","message":"POST /dynamicalgo/coinchange 11.592 ms","timestamp":"2026-04-13 16:07:47"}
+{"ip":"::1","level":"http","message":"Generate Dijkstras algo steps request received","timestamp":"2026-04-13 16:25:38"}
+{"end":"D","level":"info","message":"Dijkstra shortest path steps generated","start":"A","timestamp":"2026-04-13 16:25:38"}
+{"level":"info","message":"POST /shortestpathrouter/dijkstrasalgo 10.633 ms","timestamp":"2026-04-13 16:25:38"}

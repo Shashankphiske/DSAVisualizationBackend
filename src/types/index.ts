@@ -72,11 +72,15 @@ export interface DijkstraStep {
   previous: Record<string, string>;
   visited: string[];
   found: boolean;
+  action: "init" | "select" | "check" | "relax" | "found";
+  reason: string;
 }
 
 export interface AStarStep {
+  action: string;
+  reason: string
   priorityQ: { node: string; f: number }[];
-  currentNode: string;
+  currentNode: string | null;
   neighbors: string[];
   gScore: Record<string, number>;
   fScore: Record<string, number>;
@@ -121,7 +125,7 @@ export interface QueueStep {
 export interface CoinChangeStep {
   currentAmount: number;
   coin: number | null;
-  from?: number;
+  from: number | null;
   dpSnapshot: number[];
   explanation: string;
 }
