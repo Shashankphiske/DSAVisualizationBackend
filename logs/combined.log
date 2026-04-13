@@ -1,0 +1,5 @@
+{"level":"info","message":"POST /sortingalgo/bubblesort 3.954 ms","timestamp":"2026-04-13 12:51:42"}
+{"level":"info","message":"POST /sortingalgo/bubblesort 4.597 ms","timestamp":"2026-04-13 12:53:21"}
+{"ip":"::1","level":"http","message":"Generate Bubble Sort algo steps request received","timestamp":"2026-04-13 13:12:03"}
+{"count":5,"level":"info","message":"BubbleSort steps generated","timestamp":"2026-04-13 13:12:03"}
+{"level":"info","message":"POST /sortingalgo/bubblesort 9.114 ms","timestamp":"2026-04-13 13:12:03"}
