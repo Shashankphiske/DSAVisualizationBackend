@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.71% </span>
+                <span class="strong">81.81% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/14</span>
+                <span class='fraction'>18/22</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">81.81% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>18/22</span>
             </div>
         
             
@@ -96,7 +96,27 @@
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -104,10 +124,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -118,30 +147,49 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ShortestPathRepository } from "../repositories/shortestpath.repository";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { logger } from "../logger/logger";
+import { ShortestPathRepository } from "../repositories/shortestpath.repository";
 import { WeightedAdjList } from "../types";
 &nbsp;
 const repo = new ShortestPathRepository();
 &nbsp;
 export class ShortestPathService {
   dijkstra(rawAdj: string | WeightedAdjList, start: string, end: string) {
-    if (!rawAdj || !start || !end) throw new Error("Invalid input");
+    if (!rawAdj || !start || !end) {
+      logger.warn("Dijkstra failed: Invalid input provided");
+      throw new Error("Invalid input");
+    }
 &nbsp;
     const adj: WeightedAdjList = typeof rawAdj === "string" ? JSON.parse(rawAdj) : rawAdj;
 &nbsp;
-    if (!adj[start] || !adj[end]) throw new Error("Start or end node not found");
-    return repo.dijkstra(adj, start, end);
+    if (!adj[start] || !adj[end]) {
+      logger.warn("Dijkstra failed: Start or end node not found", { start, end });
+      throw new Error("Start or end node not found");
+    }
+&nbsp;
+    const steps = repo.dijkstra(adj, start, end);
+    logger.info("Dijkstra shortest path steps generated", { start, end });
+    return steps;
   }
 &nbsp;
   aStar(
@@ -150,7 +198,10 @@ export class ShortestPathService {
     end: string,
     rawHeuristic?: string | Record&lt;string, number&gt;
   ) {
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (!rawAdj || !start || !end) <span class="cstat-no" title="statement not covered" >throw new Error("Invalid input");</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!rawAdj || !start || !end) {
+<span class="cstat-no" title="statement not covered" >      logger.warn("A* failed: Invalid input provided");</span>
+<span class="cstat-no" title="statement not covered" >      throw new Error("Invalid input");</span>
+    }
 &nbsp;
     const adj: WeightedAdjList = typeof rawAdj === "string" ? JSON.parse(rawAdj) : rawAdj;
     const heuristic: Record&lt;string, number&gt; =
@@ -158,8 +209,14 @@ export class ShortestPathService {
         ? JSON.parse(rawHeuristic)
         : rawHeuristic ?? {};
 &nbsp;
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (!adj[start] || !adj[end]) <span class="cstat-no" title="statement not covered" >throw new Error("Start or end node not found");</span>
-    return repo.aStar(adj, start, end, heuristic);
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!adj[start] || !adj[end]) {
+<span class="cstat-no" title="statement not covered" >      logger.warn("A* failed: Start or end node not found", { start, end });</span>
+<span class="cstat-no" title="statement not covered" >      throw new Error("Start or end node not found");</span>
+    }
+&nbsp;
+    const steps = repo.aStar(adj, start, end, heuristic);
+    logger.info("A* shortest path steps generated", { start, end });
+    return steps;
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -169,7 +226,7 @@ export class ShortestPathService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-13T07:02:50.031Z
+                at 2026-04-13T17:56:01.317Z
             </div>
         <script src="prettify.js"></script>
         <script>

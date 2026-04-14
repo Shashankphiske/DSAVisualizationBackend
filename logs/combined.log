@@ -87,3 +87,47 @@
 {"ip":"::1","level":"http","message":"Generate Dijkstras algo steps request received","timestamp":"2026-04-13 16:25:38"}
 {"end":"D","level":"info","message":"Dijkstra shortest path steps generated","start":"A","timestamp":"2026-04-13 16:25:38"}
 {"level":"info","message":"POST /shortestpathrouter/dijkstrasalgo 10.633 ms","timestamp":"2026-04-13 16:25:38"}
+{"level":"info","message":"Stack push steps generated","pushCount":1,"timestamp":"2026-04-13 23:26:00"}
+{"end":"B","level":"info","message":"Dijkstra shortest path steps generated","start":"A","timestamp":"2026-04-13 23:26:00"}
+{"level":"info","message":"BFS algo steps generated","timestamp":"2026-04-13 23:26:00"}
+{"arrayLength":4,"level":"info","message":"Linear search steps generated","target":30,"timestamp":"2026-04-13 23:26:00"}
+{"level":"info","message":"LinkedList singly insertion steps generated","timestamp":"2026-04-13 23:26:00"}
+{"input":null,"level":"warn","message":"Tree traversal failed: Invalid adjacency list provided","timestamp":"2026-04-13 23:26:00"}
+{"level":"info","message":"Stack pop steps generated","popCount":1,"timestamp":"2026-04-13 23:26:00"}
+{"level":"warn","message":"Stack pop failed: Invalid input","popCount":"1","timestamp":"2026-04-13 23:26:00"}
+{"level":"warn","message":"Root node not provided for BFS","timestamp":"2026-04-13 23:26:00"}
+{"level":"info","message":"BFS algo steps generated","timestamp":"2026-04-13 23:26:00"}
+{"level":"info","message":"Linkedlist singly deletion steps generated","timestamp":"2026-04-13 23:26:00"}
+{"level":"info","message":"LinkedList singly reversal steps generated","timestamp":"2026-04-13 23:26:00"}
+{"level":"info","message":"LinkedList doubly insertion steps generated","timestamp":"2026-04-13 23:26:00"}
+{"level":"info","message":"LinkedList doubly deletion steps generated","timestamp":"2026-04-13 23:26:00"}
+{"level":"info","message":"LinkedList doubly reversal steps generated","timestamp":"2026-04-13 23:26:00"}
+{"arrayLength":4,"level":"info","message":"Binary search steps generated","target":40,"timestamp":"2026-04-13 23:26:00"}
+{"arrayLength":0,"level":"info","message":"Binary search steps generated","target":5,"timestamp":"2026-04-13 23:26:00"}
+{"level":"warn","message":"Tree traversal failed: Invalid adjacency list provided","timestamp":"2026-04-13 23:26:00"}
+{"input":"not-an-object","level":"warn","message":"Tree traversal failed: Invalid adjacency list provided","timestamp":"2026-04-13 23:26:00"}
+{"level":"info","message":"Tree inorder traversal steps generated","timestamp":"2026-04-13 23:26:00"}
+{"level":"info","message":"Tree preorder traversal steps generated","timestamp":"2026-04-13 23:26:00"}
+{"level":"info","message":"Tree postorder traversal steps generated","timestamp":"2026-04-13 23:26:00"}
+{"end":"B","level":"info","message":"Dijkstra shortest path steps generated","start":"A","timestamp":"2026-04-13 23:26:00"}
+{"end":"B","level":"warn","message":"Dijkstra failed: Start or end node not found","start":"Z","timestamp":"2026-04-13 23:26:00"}
+{"level":"warn","message":"Dijkstra failed: Invalid input provided","timestamp":"2026-04-13 23:26:00"}
+{"end":"B","level":"info","message":"A* shortest path steps generated","start":"A","timestamp":"2026-04-13 23:26:00"}
+{"end":"B","level":"info","message":"A* shortest path steps generated","start":"A","timestamp":"2026-04-13 23:26:00"}
+{"itemsAdded":1,"level":"info","message":"Queue enqueue steps generated","timestamp":"2026-04-13 23:26:01"}
+{"itemsRemoved":1,"level":"info","message":"Queue dequeue steps generated","timestamp":"2026-04-13 23:26:01"}
+{"count":3,"level":"info","message":"BubbleSort steps generated","timestamp":"2026-04-13 23:26:01"}
+{"level":"info","message":"Fibonacci algo steps generated","stepCount":10,"timestamp":"2026-04-13 23:26:01"}
+{"amount":11,"coins":[1,2,5],"level":"info","message":"Coin change algo steps generated","timestamp":"2026-04-13 23:26:01"}
+{"level":"info","message":"Least common subsequence algo steps generated","sequence1":"abc","sequence2":"ace","timestamp":"2026-04-13 23:26:01"}
+{"level":"warn","message":"BubbleSort failed: Invalid JSON input","raw":"invalid-json","timestamp":"2026-04-13 23:26:01"}
+{"count":3,"level":"info","message":"SelectionSort steps generated","timestamp":"2026-04-13 23:26:01"}
+{"level":"warn","message":"SelectionSort failed: Invalid JSON input","raw":"invalid-json","timestamp":"2026-04-13 23:26:01"}
+{"count":3,"level":"info","message":"InsertionSort steps generated","timestamp":"2026-04-13 23:26:01"}
+{"level":"warn","message":"InsertionSort failed: Invalid JSON input","raw":"invalid-json","timestamp":"2026-04-13 23:26:01"}
+{"count":3,"level":"info","message":"MergeSort steps generated","timestamp":"2026-04-13 23:26:01"}
+{"level":"warn","message":"MergeSort failed: Invalid JSON input","raw":"invalid-json","timestamp":"2026-04-13 23:26:01"}
+{"count":3,"level":"info","message":"QuickSort steps generated","timestamp":"2026-04-13 23:26:01"}
+{"level":"warn","message":"QuickSort failed: Invalid JSON input","raw":"invalid-json","timestamp":"2026-04-13 23:26:01"}
+{"count":3,"level":"info","message":"HeapSort steps generated","timestamp":"2026-04-13 23:26:01"}
+{"level":"warn","message":"HeapSort failed: Invalid JSON input","raw":"invalid-json","timestamp":"2026-04-13 23:26:01"}
