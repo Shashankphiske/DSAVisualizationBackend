@@ -24,7 +24,7 @@ export class DynamicAlgoRepository {
 
   coinChange(coins: number[], amount: number): { steps: CoinChangeStep[]; result: number } {
     const dp = Array(amount + 1).fill(Infinity);
-    dp[0] = 0; // Base case: 0 coins to make amount 0
+    dp[0] = 0; 
     const steps = [];
 
     steps.push({
@@ -35,7 +35,6 @@ export class DynamicAlgoRepository {
       explanation: "Initialize dp[0] = 0, others = ∞",
     });
 
-    // Process each amount from 1 to the target amount
     for (let i = 1; i <= amount; i++) {
       for (const coin of coins) {
         if (i - coin >= 0 && dp[i - coin] !== Infinity) {
@@ -53,7 +52,6 @@ export class DynamicAlgoRepository {
         }
       }
 
-      // Step after processing all coins for a specific amount
       steps.push({
         currentAmount: i,
         coin: null,

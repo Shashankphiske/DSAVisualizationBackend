@@ -1,4 +1,4 @@
-// ─── Sorting ────────────────────────────────────────────────────────────────
+// Sorting
 
 export interface SortStep {
   arr: number[];
@@ -26,7 +26,7 @@ export interface SelectionSortStep extends SortStep {
   selectedmin: number | null;
 }
 
-// ─── Searching ──────────────────────────────────────────────────────────────
+// Searching
 
 export interface LinearSearchStep {
   arr: number[];
@@ -42,7 +42,7 @@ export interface BinarySearchStep {
   found: boolean;
 }
 
-// ─── Graph ──────────────────────────────────────────────────────────────────
+// Graph
 
 export type AdjList = Record<string | number, (string | number)[]>;
 
@@ -60,7 +60,7 @@ export interface DFSStep {
   found: boolean;
 }
 
-// ─── Shortest Path ──────────────────────────────────────────────────────────
+// Shortest Path
 
 export type WeightedAdjList = Record<string, Record<string, number>>;
 
@@ -89,11 +89,11 @@ export interface AStarStep {
   found: boolean;
 }
 
-// ─── Tree ───────────────────────────────────────────────────────────────────
+// Tree
 
 export type TreeAdjList = Record<string, [string | null, string | null]>;
 
-// ─── Linked List ────────────────────────────────────────────────────────────
+// Linked List
 
 export interface LinkedListStep {
   current: number | null;
@@ -102,7 +102,7 @@ export interface LinkedListStep {
   list: number[];
 }
 
-// ─── Stack ──────────────────────────────────────────────────────────────────
+// Stack
 
 export interface StackStep {
   action: string;
@@ -111,7 +111,7 @@ export interface StackStep {
   list: number[];
 }
 
-// ─── Queue ──────────────────────────────────────────────────────────────────
+// Queue
 
 export interface QueueStep {
   action: string;
@@ -120,7 +120,7 @@ export interface QueueStep {
   list: number[];
 }
 
-// ─── Dynamic Programming ────────────────────────────────────────────────────
+// Dynamic Programming
 
 export interface CoinChangeStep {
   currentAmount: number;
@@ -153,7 +153,7 @@ export interface LCSBacktrackStep {
   char?: string;
 }
 
-// ─── Review / Sheets ────────────────────────────────────────────────────────
+// Review / Sheets
 
 export interface ReviewPayload {
   name: string;

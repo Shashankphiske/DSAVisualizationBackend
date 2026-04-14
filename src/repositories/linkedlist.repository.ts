@@ -1,6 +1,6 @@
 import { LinkedListStep } from "../types";
 
-// ─── Singly Node ────────────────────────────────────────────────────────────
+// Singly Node
 
 class SNode {
   val: number;
@@ -8,7 +8,7 @@ class SNode {
   constructor(val: number) { this.val = val; }
 }
 
-// ─── Doubly Node ────────────────────────────────────────────────────────────
+// Doubly Node
 
 class DNode {
   val: number;
@@ -17,7 +17,7 @@ class DNode {
   constructor(val: number) { this.val = val; }
 }
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+// Helpers
 
 function buildSingly(arr: number[]): { head: SNode | null; tail: SNode | null } {
   let head: SNode | null = null, tail: SNode | null = null;
@@ -53,7 +53,7 @@ function doublyToArray(head: DNode | null): number[] {
   return out;
 }
 
-// ─── Repository ──────────────────────────────────────────────────────────────
+// Repository
 
 export class LinkedListRepository {
   singlyInsertion(arr: number[], index: number, value: number): LinkedListStep[] {
