@@ -31,16 +31,19 @@ A robust Node.js/TypeScript backend providing step-by-step execution snapshots f
     npm i
     ```
 
-2. Setup environment variables:
+3. Setup environment variables:
     ```bash
     PORT=3000
     NODE_ENV="development"
+    REDIS_URL="redis://localhost:6379
     ```
 
-3. Running the app:
+4. Running the app:
     ```bash
     npm run dev
     ```
+5. Make sure you have local redis server installed
+
 ## Testing
 
 1. Run all tests:
