@@ -1,0 +1,16 @@
+FROM node:20-alpine
+WORKDIR /usr/src/app
+COPY package*.json ./
+
+# Use && to chain commands correctly
+RUN npm install && npm install pm2 -g
+
+COPY . .
+
+# Ensure you are building the TS files before running
+RUN npx tsc
+
+EXPOSE 3000
+
+# Make sure server.js exists in the location tsc outputs to (usually /dist/server.js)
+CMD ["pm2-runtime", "start", "dist/server.js"]

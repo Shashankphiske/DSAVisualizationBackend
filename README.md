@@ -65,6 +65,19 @@ Logs are stored in /logs directory:
 1. combined.log: All application level logs
 2. error.log: All error logs
 
+## Docker Configuration
+
+```bash
+    docker compose up --build --scale node-app=2
+    # Make sure that in .env:
+    REDIS_URL:"redis://redis:6379"
+```
+
+## View Docker Logs
+```bash
+    docker compose logs -f
+```
+
 ## Project Structure:
 ```
 /DSAVisualizationBackend/
@@ -72,6 +85,7 @@ Logs are stored in /logs directory:
 │   ├── config/      
 │   ├── controllers/
 │   ├── repository/ 
+|   ├── middleware/
 │   ├── routes/  
 │   ├── services/ 
 │   ├── types/  
