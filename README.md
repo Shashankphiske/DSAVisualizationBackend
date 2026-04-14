@@ -31,16 +31,19 @@ A robust Node.js/TypeScript backend providing step-by-step execution snapshots f
     npm i
     ```
 
-2. Setup environment variables:
+3. Setup environment variables:
     ```bash
     PORT=3000
     NODE_ENV="development"
+    REDIS_URL="redis://localhost:6379
     ```
 
-3. Running the app:
+4. Running the app:
     ```bash
     npm run dev
     ```
+5. Make sure you have local redis server installed
+
 ## Testing
 
 1. Run all tests:
@@ -65,6 +68,19 @@ Logs are stored in /logs directory:
 1. combined.log: All application level logs
 2. error.log: All error logs
 
+## Docker Configuration
+
+```bash
+    docker compose up --build --scale node-app=2
+    # Make sure that in .env:
+    REDIS_URL:"redis://redis:6379"
+```
+
+## View Docker Logs
+```bash
+    docker compose logs -f
+```
+
 ## Project Structure:
 ```
 /DSAVisualizationBackend/
@@ -72,6 +88,7 @@ Logs are stored in /logs directory:
 │   ├── config/      
 │   ├── controllers/
 │   ├── repository/ 
+|   ├── middleware/
 │   ├── routes/  
 │   ├── services/ 
 │   ├── types/  

@@ -16,6 +16,7 @@ import morgan from "morgan";
 
 import { SheetsController } from "../controllers/sheets.controller";
 import { logger } from "../logger/logger";
+import { cacheMiddleware } from "../middleware/redis.middleware";
 
 const sheetsCtrl = new SheetsController();
 
@@ -39,6 +40,8 @@ export function createApp(): Application {
   app.use(cors());
   app.use(limiter);
   app.use(morgan(`:method :url :response-time ms`, { stream }));
+
+  app.use(cacheMiddleware.cacheRequest(3600));
 
   app.get("/", (_req: Request, res: Response) => {
     res.send("hello, world!");
