@@ -6,7 +6,7 @@ const redisUrl = process.env.REDIS_URL || 'redis://redis:6379';
 const redisOptions = {
     maxRetriesPerRequest: null,
     enableReadyCheck: true,
-    retryStrategy: (times: number) => Math.min(times * 50, 2000),
+    retryStrategy: () => null,
 };
 
 const client = new Redis(redisUrl, redisOptions);

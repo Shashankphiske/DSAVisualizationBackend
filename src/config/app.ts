@@ -11,6 +11,7 @@ import linkedListRoutes from "../routes/linkedlist.routes";
 import stackRoutes from "../routes/stack.routes";
 import queueRoutes from "../routes/queue.routes";
 import dynamicAlgoRoutes from "../routes/dynamicalgo.routes";
+import { UserRouter } from "../routes/user.routes";
 import rateLimit from "express-rate-limit";
 import morgan from "morgan";
 
@@ -21,15 +22,15 @@ import { cacheMiddleware } from "../middleware/redis.middleware";
 const sheetsCtrl = new SheetsController();
 
 const limiter = rateLimit({
-  windowMs: 60*1000,
+  windowMs: 60 * 1000,
   max: 50,
   message: "Too many requests",
   standardHeaders: true,
-  legacyHeaders: false
+  legacyHeaders: false,
 });
 
 const stream = {
-  write: (message: string) => logger.info(message.trim())
+  write: (message: string) => logger.info(message.trim()),
 };
 
 export function createApp(): Application {
@@ -41,21 +42,24 @@ export function createApp(): Application {
   app.use(limiter);
   app.use(morgan(`:method :url :response-time ms`, { stream }));
 
-  app.use(cacheMiddleware.cacheRequest(3600));
-
   app.get("/", (_req: Request, res: Response) => {
     res.send("hello, world!");
   });
 
-  app.use("/sortingalgo", sortingRoutes);
-  app.use("/searchingalgo", searchingRoutes);
-  app.use("/graphalgo", graphRoutes);
-  app.use("/shortestpathrouter", shortestPathRoutes);
-  app.use("/treealgo", treeRoutes);
-  app.use("/linkedlist", linkedListRoutes);
-  app.use("/stackalgo", stackRoutes);
-  app.use("/queuealgo", queueRoutes);
-  app.use("/dynamicalgo", dynamicAlgoRoutes);
+  // Algorithm routes — each one gets the generic response cache applied
+  const cache = cacheMiddleware.cacheRequest(3600);
+  app.use("/sortingalgo", cache, sortingRoutes);
+  app.use("/searchingalgo", cache, searchingRoutes);
+  app.use("/graphalgo", cache, graphRoutes);
+  app.use("/shortestpathrouter", cache, shortestPathRoutes);
+  app.use("/treealgo", cache, treeRoutes);
+  app.use("/linkedlist", cache, linkedListRoutes);
+  app.use("/stackalgo", cache, stackRoutes);
+  app.use("/queuealgo", cache, queueRoutes);
+  app.use("/dynamicalgo", cache, dynamicAlgoRoutes);
+
+  // User progress routes — NO cache, each user's data is keyed by their IP
+  app.use("/users", UserRouter);
 
   app.post("/sendReview", (req, res) => sheetsCtrl.sendReview(req, res));
 
