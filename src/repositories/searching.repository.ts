@@ -1,14 +1,5 @@
 import { LinearSearchStep, BinarySearchStep } from "../types";
 
-/**
- * SearchingRepository
- *
- * Each method produces an atomic step sequence that maps 1-to-1
- * to animation frames in the frontend. The `eliminated` array
- * lets the UI visually fade out indices that are no longer in
- * the search window, providing immediate feedback on the
- * algorithm's narrowing behaviour.
- */
 export class SearchingRepository {
 
   linearSearch(arr: number[], target: number): LinearSearchStep[] {
@@ -32,7 +23,8 @@ export class SearchingRepository {
       eliminated.push(i);
     }
 
-    if (steps.length > 0 && !steps[steps.length - 1].found) {
+    const lastStep = steps[steps.length - 1];
+    if (!lastStep || !lastStep.found) {
       steps.push({
         arr: [...arr],
         found: false,
@@ -88,10 +80,10 @@ export class SearchingRepository {
       });
 
       if (target > arr[mid]) {
-        for (let i = left; i <= mid; i++) eliminated.add(i);
+        for (let i = left; i <= mid; i++) eliminated.add(i); // ✅ already correct
         left = mid + 1;
       } else {
-        for (let i = mid; i <= right; i++) eliminated.add(i);
+        for (let i = mid; i <= right; i++) eliminated.add(i); // ✅ already correct
         right = mid - 1;
       }
     }

@@ -12,7 +12,6 @@ function buildKey(ip: string, dsaType: string): string {
 function getClientIp(req: Request): string {
     const forwarded = req.headers["x-forwarded-for"];
     if (forwarded) {
-        // x-forwarded-for can be a comma-separated list; take the first (original) IP
         return (Array.isArray(forwarded) ? forwarded[0] : forwarded)
             .split(",")[0]
             .trim();

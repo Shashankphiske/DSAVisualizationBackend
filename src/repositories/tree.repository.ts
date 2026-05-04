@@ -34,10 +34,6 @@ export class TreeRepository {
     return nodes[root];
   }
 
-  // Returns a flat string[] so the route's res.json({ arr: repo.inorder(adj) })
-  // produces { arr: ["4","2","5","1","3"] } — exactly what fetchSteps().arr gives
-  // to player.load, which requires a plain array.
-
   inorder(adj: TreeAdjList): string[] {
     const root = this.buildTree(adj);
     const arr: string[] = [];

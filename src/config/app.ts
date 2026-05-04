@@ -24,8 +24,6 @@ const sheetsCtrl = new SheetsController();
 
 /**
  * Rate limiter: 50 requests per minute per IP.
- * Prevents abuse of the step-generation endpoints while
- * comfortably accommodating normal classroom usage.
  */
 const limiter = rateLimit({
   windowMs: 60 * 1000,
@@ -53,26 +51,22 @@ export function createApp(): Application {
     res.status(200).json({ status: "ok", service: "dsa-visualization-backend" });
   });
 
-  // Algorithm step-generation routes — responses are cached in Redis
   const cache = cacheMiddleware.cacheRequest(3600);
-  app.use("/sortingalgo",      cache, sortingRoutes);
-  app.use("/searchingalgo",    cache, searchingRoutes);
-  app.use("/graphalgo",        cache, graphRoutes);
+  app.use("/sortingalgo", cache, sortingRoutes);
+  app.use("/searchingalgo", cache, searchingRoutes);
+  app.use("/graphalgo", cache, graphRoutes);
   app.use("/shortestpathrouter", cache, shortestPathRoutes);
-  app.use("/treealgo",         cache, treeRoutes);
-  app.use("/linkedlist",       cache, linkedListRoutes);
-  app.use("/stackalgo",        cache, stackRoutes);
-  app.use("/queuealgo",        cache, queueRoutes);
-  app.use("/dynamicalgo",      cache, dynamicAlgoRoutes);
+  app.use("/treealgo", cache, treeRoutes);
+  app.use("/linkedlist", cache, linkedListRoutes);
+  app.use("/stackalgo", cache, stackRoutes);
+  app.use("/queuealgo", cache, queueRoutes);
+  app.use("/dynamicalgo", cache, dynamicAlgoRoutes);
 
-  // Quiz routes — GET questions are cached; POST /answer is not (unique per user)
-  app.use("/quiz/questions",   cache, quizRoutes);
-  app.use("/quiz",             quizRoutes);
+  app.use("/quiz/questions", cache, quizRoutes);
+  app.use("/quiz", quizRoutes);
 
-  // User progress routes — NOT cached (per-user, keyed by IP)
   app.use("/users", UserRouter);
 
-  // Review submission
   app.post("/sendReview", (req, res) => sheetsCtrl.sendReview(req, res));
 
   // Global error handler

@@ -1,6 +1,6 @@
 import { LinkedListStep } from "../types";
 
-// ─── Node classes ─────────────────────────────────────────────
+// node class
 
 class SNode {
   val: number;
@@ -15,7 +15,7 @@ class DNode {
   constructor(val: number) { this.val = val; }
 }
 
-// ─── Builders ────────────────────────────────────────────────
+// ll builders
 
 function buildSingly(arr: number[]): SNode | null {
   let head: SNode | null = null, tail: SNode | null = null;
@@ -49,11 +49,10 @@ function doublyToArray(head: DNode | null): number[] {
   return out;
 }
 
-// ─── Repository ───────────────────────────────────────────────
 
 export class LinkedListRepository {
 
-  // ── Singly Linked List ───────────────────────────────────────
+  // singly linked list
 
   singlyInsertion(arr: number[], index: number, value: number): LinkedListStep[] {
     const steps: LinkedListStep[] = [];
@@ -155,24 +154,8 @@ export class LinkedListRepository {
   singlyReversal(arr: number[]): LinkedListStep[] {
     const steps: LinkedListStep[] = [];
 
-    // Shadow array tracks the visual list at every frame.
-    // We cannot use singlyToArray() mid-reversal because mutating .next
-    // pointers corrupts the chain — the shadow array is the source of truth.
-    //
-    // Strategy: as we "flip" each node's pointer, we move that node's value
-    // to the front of the shadow array, growing the reversed prefix one step
-    // at a time:
-    //
-    //   arr    = [10, 20, 30, 40, 50]   (original)
-    //   i=0  → shadow = [10, 20, 30, 40, 50]  curr=10 highlighted, then flipped
-    //   i=1  → shadow = [20, 10, 30, 40, 50]  curr=20 highlighted, then flipped
-    //   i=2  → shadow = [30, 20, 10, 40, 50]
-    //   ...
-    //   done → shadow = [50, 40, 30, 20, 10]
-
     const shadow = [...arr];
 
-    // ── init ─────────────────────────────────────────────────
     steps.push({
       current: null,
       prev: null,
@@ -189,7 +172,6 @@ export class LinkedListRepository {
       const nextVal = i + 1 < arr.length ? arr[i + 1] : null;
       const afterNextVal = i + 2 < arr.length ? arr[i + 2] : null;
 
-      // Sub-step 1 — arrive at node, show its current state
       steps.push({
         current: currVal,
         prev: prevVal,
@@ -200,7 +182,6 @@ export class LinkedListRepository {
         explanation: `Visiting node ${currVal} — curr.next=${nextVal ?? "null"}, prev=${prevVal ?? "null"}`,
       });
 
-      // Sub-step 2 — save next = curr.next
       steps.push({
         current: currVal,
         prev: prevVal,
@@ -211,7 +192,6 @@ export class LinkedListRepository {
         explanation: `next = curr.next → next saved as ${nextVal ?? "null"} (so we can still advance after overwriting curr.next)`,
       });
 
-      // Sub-step 3 — curr.next = prev  (the actual pointer flip)
       steps.push({
         current: currVal,
         prev: prevVal,
@@ -222,11 +202,9 @@ export class LinkedListRepository {
         explanation: `curr.next = prev → node ${currVal}'s pointer now aims at ${prevVal ?? "null"} instead of ${nextVal ?? "null"} ✓`,
       });
 
-      // Update shadow: move currVal to front to show the reversal growing
       shadow.splice(i, 1);
       shadow.unshift(currVal);
 
-      // Sub-step 4 — advance: prev = curr, curr = saved next
       steps.push({
         current: nextVal ?? null,
         prev: currVal,
@@ -238,7 +216,6 @@ export class LinkedListRepository {
       });
     }
 
-    // ── complete ──────────────────────────────────────────────
     steps.push({
       current: null,
       prev: null,
@@ -251,8 +228,6 @@ export class LinkedListRepository {
 
     return steps;
   }
-
-  // ── Doubly Linked List ───────────────────────────────────────
 
   doublyInsertion(arr: number[], index: number, value: number): LinkedListStep[] {
     const steps: LinkedListStep[] = [];
@@ -361,20 +336,6 @@ export class LinkedListRepository {
   doublyReversal(arr: number[]): LinkedListStep[] {
     const steps: LinkedListStep[] = [];
 
-    // Same shadow-array strategy as singlyReversal:
-    // doublyToArray() follows .next pointers which are being mutated
-    // mid-loop, so we track the visual list independently.
-    //
-    // For a doubly reversal the visual effect is identical to singly:
-    // each node's value bubbles to the front as its pointers are swapped.
-    //
-    //   arr    = [10, 20, 30, 40, 50]
-    //   i=0  swap → shadow = [10, 20, 30, 40, 50]  (10 already at front)
-    //   i=1  swap → shadow = [20, 10, 30, 40, 50]
-    //   i=2  swap → shadow = [30, 20, 10, 40, 50]
-    //   ...
-    //   done → shadow = [50, 40, 30, 20, 10]
-
     const shadow = [...arr];
 
     steps.push({
@@ -393,7 +354,6 @@ export class LinkedListRepository {
       const nextVal = i + 1 < arr.length ? arr[i + 1] : null;
       const afterNextVal = i + 2 < arr.length ? arr[i + 2] : null;
 
-      // Sub-step 1 — arrive at node, show its current state
       steps.push({
         current: currVal,
         prev: prevVal,
@@ -404,7 +364,6 @@ export class LinkedListRepository {
         explanation: `Visiting node ${currVal} — curr.prev=${prevVal ?? "null"}, curr.next=${nextVal ?? "null"}`,
       });
 
-      // Sub-step 2 — temp = curr.prev (save old prev before overwriting)
       steps.push({
         current: currVal,
         prev: prevVal,
@@ -415,7 +374,6 @@ export class LinkedListRepository {
         explanation: `temp = curr.prev → temp is now ${prevVal ?? "null"} (saved so we don't lose the backward link)`,
       });
 
-      // Sub-step 3 — curr.prev = curr.next  (left pointer flips right)
       steps.push({
         current: currVal,
         prev: nextVal,
@@ -426,7 +384,6 @@ export class LinkedListRepository {
         explanation: `curr.prev = curr.next → node ${currVal}'s ← pointer now aims at ${nextVal ?? "null"} instead of ${prevVal ?? "null"}`,
       });
 
-      // Sub-step 4 — curr.next = temp  (right pointer flips left)
       steps.push({
         current: currVal,
         prev: nextVal,
@@ -437,11 +394,9 @@ export class LinkedListRepository {
         explanation: `curr.next = temp → node ${currVal}'s → pointer now aims at ${prevVal ?? "null"} instead of ${nextVal ?? "null"}. Both pointers fully swapped ✓`,
       });
 
-      // Update shadow: move currVal to front to reflect the reversal progress
       shadow.splice(i, 1);
       shadow.unshift(currVal);
 
-      // Sub-step 5 — advance curr = curr.prev (which is the old next after swap)
       steps.push({
         current: nextVal ?? null,
         prev: currVal,

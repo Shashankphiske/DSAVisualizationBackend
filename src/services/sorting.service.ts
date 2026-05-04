@@ -3,13 +3,6 @@ import { SortingRepository } from "../repositories/sorting.repository";
 
 const repo = new SortingRepository();
 
-/**
- * SortingService
- *
- * Validates and parses raw request input before delegating to
- * the repository. All parsing errors are logged at WARN level
- * and re-thrown so the controller can return a 400 response.
- */
 export class SortingService {
 
   private parseArray(raw: string, caller: string): number[] {

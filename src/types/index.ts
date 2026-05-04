@@ -114,7 +114,7 @@ export interface TreeStep {
   explanation: string;
 }
 
-// ─── LINKED LIST ──────────────────────────────────────────────
+// linked list
 
 export interface LinkedListStep {
   current: number | null;
@@ -126,7 +126,7 @@ export interface LinkedListStep {
   explanation: string;
 }
 
-// ─── STACK ────────────────────────────────────────────────────
+// stack
 
 export interface StackStep {
   action: "push-start" | "push-complete" | "pop-start" | "pop-complete" | "underflow";
@@ -136,7 +136,7 @@ export interface StackStep {
   explanation: string;
 }
 
-// ─── QUEUE ────────────────────────────────────────────────────
+// queue
 
 export interface QueueStep {
   action: "enqueue-start" | "enqueue-complete" | "dequeue-start" | "dequeue-complete" | "underflow";
@@ -146,7 +146,7 @@ export interface QueueStep {
   explanation: string;
 }
 
-// ─── DYNAMIC PROGRAMMING ──────────────────────────────────────
+// dp
 
 export interface CoinChangeStep {
   currentAmount: number;
@@ -179,7 +179,7 @@ export interface LCSBacktrackStep {
   char?: string;
 }
 
-// ─── QUIZ / USER STUDY ────────────────────────────────────────
+// quiz
 
 export interface QuizQuestion {
   id: number;
@@ -212,7 +212,7 @@ export interface UserSession {
   lastUpdated: string;
 }
 
-// ─── REVIEW / SHEETS ──────────────────────────────────────────
+// review
 
 export interface ReviewPayload {
   name: string;

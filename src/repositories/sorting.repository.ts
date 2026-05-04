@@ -7,20 +7,6 @@ import {
   SelectionSortStep,
 } from "../types";
 
-/**
- * SortingRepository
- *
- * Each method decomposes a sorting algorithm into a sequence of
- * atomic SortStep objects. Every step captures:
- *   - arr          : the full array state after the operation
- *   - comparing    : indices of elements currently under comparison
- *   - swapped      : whether a swap occurred at this step
- *   - sorted       : indices whose final positions are confirmed
- *   - explanation  : plain-language description for the UI panel
- *
- * The frontend animation engine consumes this step sequence
- * directly; no client-side algorithmic logic is required.
- */
 export class SortingRepository {
 
   bubbleSort(arr: number[]): SortStep[] {

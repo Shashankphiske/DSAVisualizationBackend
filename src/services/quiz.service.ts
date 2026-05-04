@@ -4,20 +4,6 @@ import { QuizAnswerPayload, QuizAnswerResult } from "../types";
 
 const repo = new QuizRepository();
 
-/**
- * QuizService
- *
- * Implements the prediction-challenge assessment module described
- * in Section X of the IEEE paper. The service exposes three
- * operations:
- *   1. getQuestions  — retrieve questions filtered by category/difficulty
- *   2. validateAnswer — check a submitted answer and return feedback
- *   3. getExplanation — return the post-answer explanation for a question
- *
- * Answer validation is intentionally stateless: the client tracks
- * session score locally and syncs to the UserController endpoint.
- * This keeps the quiz service pure and independently testable.
- */
 export class QuizService {
 
   getQuestions(category?: string, difficulty?: string) {

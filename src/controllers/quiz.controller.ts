@@ -5,16 +5,6 @@ import { logger } from "../logger/logger";
 
 const service = new QuizService();
 
-/**
- * QuizController
- *
- * Exposes the prediction-challenge API used by the frontend
- * quiz module. Three endpoints:
- *
- *   GET  /quiz/questions             — all questions (sanitised)
- *   GET  /quiz/questions/:category   — filtered by DSA category
- *   POST /quiz/answer                — validate a submitted answer
- */
 export class QuizController {
 
   getQuestions(req: Request, res: Response): void {

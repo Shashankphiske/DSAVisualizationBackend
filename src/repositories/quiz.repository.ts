@@ -1,22 +1,9 @@
 import { QuizQuestion } from "../types";
 
-/**
- * QuizRepository
- *
- * Maintains the question bank used by the prediction-challenge
- * module. Questions are categorised by DSA topic and difficulty
- * so the service layer can filter appropriately.
- *
- * This module is a direct implementation of the "real-time
- * assessment mechanism" described in Section X of the IEEE
- * paper. Question data is static and embedded here to avoid
- * database dependency; extending to a persistent store requires
- * only swapping the data source in the service layer.
- */
 export class QuizRepository {
 
   private readonly questions: QuizQuestion[] = [
-    // ── Sorting ──────────────────────────────────────────────
+    // sorting
     {
       id: 1,
       dsaCategory: "sorting",
@@ -63,7 +50,7 @@ export class QuizRepository {
       explanation: "When the pivot is always the minimum or maximum element (already-sorted input), every partition produces subarrays of size 0 and n-1, yielding T(n)=T(n-1)+O(n) → O(n²).",
     },
 
-    // ── Searching ─────────────────────────────────────────────
+    // searching
     {
       id: 6,
       dsaCategory: "searching",
@@ -103,7 +90,7 @@ export class QuizRepository {
       explanation: "Stack after pushes (bottom→top): [5,10,15]. Pop 15, pop 10. Remaining: [5].",
     },
 
-    // ── Linked List ───────────────────────────────────────────
+    // linked list
     {
       id: 10,
       dsaCategory: "linkedlist",
@@ -123,7 +110,7 @@ export class QuizRepository {
       explanation: "After processing 1: prev=1. After processing 2: prev=2. After processing 3: prev=3 (its next now points to 2).",
     },
 
-    // ── Graph ─────────────────────────────────────────────────
+    // graph
     {
       id: 12,
       dsaCategory: "graph",
@@ -134,7 +121,7 @@ export class QuizRepository {
       explanation: "BFS uses a queue (FIFO). Start: queue=[A]. Visit A → enqueue B,C → queue=[B,C]. Visit B → enqueue D → queue=[C,D]. Visit C (D already queued). Visit D. Order: A,B,C,D.",
     },
 
-    // ── Dynamic Programming ───────────────────────────────────
+    // dp
     {
       id: 13,
       dsaCategory: "dp",
