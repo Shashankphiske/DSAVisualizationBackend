@@ -33,6 +33,13 @@ const limiter = rateLimit({
   legacyHeaders: false,
 });
 
+const corsOptions = {
+  origin: 'https://dsavisualizerfront.netlify.app/', // Only allow this domain
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  optionsSuccessStatus: 200 // Some legacy browsers (IE11) choke on 204
+};
+
 const morganStream = {
   write: (message: string) => logger.info(message.trim()),
 };
@@ -42,7 +49,7 @@ export function createApp(): Application {
 
   app.use(express.json());
   app.use(helmet());
-  app.use(cors());
+  app.use(cors(corsOptions));
   app.use(limiter);
   app.use(morgan(":method :url :status :response-time ms", { stream: morganStream }));
 
