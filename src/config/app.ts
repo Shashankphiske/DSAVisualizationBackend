@@ -34,7 +34,7 @@ const limiter = rateLimit({
 });
 
 const corsOptions = {
-  origin: 'https://dsavisualizerfront.netlify.app/', // Only allow this domain
+  origin: 'https://dsavisualizerfront.netlify.app', // Only allow this domain
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   optionsSuccessStatus: 200 // Some legacy browsers (IE11) choke on 204
