@@ -9,7 +9,7 @@ const redisOptions = {
     retryStrategy: () => null,
 };
 
-const client = new Redis(redisUrl, redisOptions);
+const client = new Redis(process.env.REDIS_URL ?? "", redisOptions);
 const pubClient = client.duplicate();
 const subClient = client.duplicate();
 
